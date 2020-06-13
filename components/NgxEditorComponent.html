@@ -71,7 +71,7 @@
     </p>
     <p class="comment">
                     <code><a href="https://angular.io/api/forms/ControlValueAccessor" target="_blank" >ControlValueAccessor</a></code>
-                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
                     <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
     </p>
 
@@ -508,7 +508,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
   Component, ViewChild, ElementRef,
-  forwardRef, OnDestroy, ViewEncapsulation, AfterViewInit
+  forwardRef, OnDestroy, ViewEncapsulation, OnInit
 } from &#x27;@angular/core&#x27;;
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from &#x27;@angular/forms&#x27;;
 
@@ -530,7 +530,7 @@ import { NgxEditorService, NgxEditorServiceConfig } from &#x27;./ngx-editor.serv
   encapsulation: ViewEncapsulation.None
 })
 
-export class NgxEditorComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
+export class NgxEditorComponent implements ControlValueAccessor, OnInit, OnDestroy {
   @ViewChild(&#x27;ngxEditor&#x27;, { static: true }) ngxEditor: ElementRef;
 
   private view: EditorView;
@@ -590,7 +590,7 @@ export class NgxEditorComponent implements ControlValueAccessor, AfterViewInit, 
 
     this.view.updateState(state);
 
-    if (tr.docChanged) {
+    if (tr.docChanged &amp;&amp; this.onChange) {
       const json &#x3D; state.doc.toJSON();
       this.onChange(json);
     }
@@ -614,7 +614,7 @@ export class NgxEditorComponent implements ControlValueAccessor, AfterViewInit, 
     this.editorInitialized &#x3D; true;
   }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.createEditor();
   }
 

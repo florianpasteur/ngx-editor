@@ -86,6 +86,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <li class="link ">
                                         <a href="additional-documentation/input-rules.html" data-type="entity-link" data-context-id="additional">Input Rules</a>
                                     </li>
+                                    <li class="link ">
+                                        <a href="additional-documentation/reactive-forms.html" data-type="entity-link" data-context-id="additional">Reactive Forms</a>
+                                    </li>
                         </ul>
                     </li>
                     <li class="chapter modules">
