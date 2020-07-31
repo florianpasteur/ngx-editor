@@ -255,7 +255,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://angular.io/api/core/ModuleWithProviders" target="_blank" >ModuleWithProviders</a></code>
+                        <b>Returns : </b>    <code>ModuleWithProviders&lt;NgxEditorModule&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -285,7 +285,7 @@ const NGX_EDITOR_CONFIG_TOKEN &#x3D; new InjectionToken&lt;NgxEditorConfig&gt;(&
 })
 
 export class NgxEditorModule {
-  static forRoot(config: NgxEditorConfig): ModuleWithProviders {
+  static forRoot(config: NgxEditorConfig): ModuleWithProviders&lt;NgxEditorModule&gt; {
 
     return {
       ngModule: NgxEditorModule,

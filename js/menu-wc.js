@@ -105,13 +105,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/NgxEditorModule.html" data-type="entity-link">NgxEditorModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-NgxEditorModule-c246d7ddcaf4fa8190a7e01343c46a88"' : 'data-target="#xs-components-links-module-NgxEditorModule-c246d7ddcaf4fa8190a7e01343c46a88"' }>
+                                            'data-target="#components-links-module-NgxEditorModule-0b2ae0c7ac4d66fca0e29a1324c17001"' : 'data-target="#xs-components-links-module-NgxEditorModule-0b2ae0c7ac4d66fca0e29a1324c17001"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-NgxEditorModule-c246d7ddcaf4fa8190a7e01343c46a88"' :
-                                            'id="xs-components-links-module-NgxEditorModule-c246d7ddcaf4fa8190a7e01343c46a88"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-NgxEditorModule-0b2ae0c7ac4d66fca0e29a1324c17001"' :
+                                            'id="xs-components-links-module-NgxEditorModule-0b2ae0c7ac4d66fca0e29a1324c17001"' }>
                                             <li class="link">
                                                 <a href="components/NgxEditorComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">NgxEditorComponent</a>
@@ -165,7 +165,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                             <li class="link">
+                                <a href="interfaces/DropdownViewRender.html" data-type="entity-link">DropdownViewRender</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/MenuItemMeta.html" data-type="entity-link">MenuItemMeta</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/MenuItemViewRender.html" data-type="entity-link">MenuItemViewRender</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/MenuItemViewSpec.html" data-type="entity-link">MenuItemViewSpec</a>

@@ -126,7 +126,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/lib/prosemirror/plugins/menu/menu.ts:46</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/lib/prosemirror/plugins/menu/menu.ts:48</a></div>
                             </td>
                         </tr>
 
@@ -225,7 +225,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/lib/prosemirror/plugins/menu/menu.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/lib/prosemirror/plugins/menu/menu.ts:46</a></div>
                             </td>
                         </tr>
 
@@ -257,7 +257,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/lib/prosemirror/plugins/menu/menu.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/lib/prosemirror/plugins/menu/menu.ts:48</a></div>
                             </td>
                         </tr>
 
@@ -293,8 +293,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="60"
-                            class="link-to-prism">src/lib/prosemirror/plugins/menu/menu.ts:60</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="62"
+                            class="link-to-prism">src/lib/prosemirror/plugins/menu/menu.ts:62</a></div>
                 </td>
             </tr>
 
@@ -332,8 +332,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="167"
-                            class="link-to-prism">src/lib/prosemirror/plugins/menu/menu.ts:167</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="169"
+                            class="link-to-prism">src/lib/prosemirror/plugins/menu/menu.ts:169</a></div>
                 </td>
             </tr>
 
@@ -342,7 +342,7 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>    <code>{ dom: any; updates: {}; }</code>
+                        <b>Returns : </b>        <code><a href="../interfaces/DropdownViewRender.html" target="_self" >DropdownViewRender</a></code>
 
                     </div>
                 </td>
@@ -370,7 +370,9 @@ import {
   ToolbarDropdownGroupKeys,
   ToolbarDropdownGroupValues,
   MenuOptions,
-  Command
+  Command,
+  DropdownViewRender,
+  MenuItemViewRender
 } from &#x27;../../../types&#x27;;
 
 import { isNodeActive, isMarkActive, isListItem } from &#x27;../../helpers&#x27;;
@@ -525,7 +527,7 @@ class DropDownView {
     return dropdown;
   }
 
-  render() {
+  render(): DropdownViewRender {
     this.dom &#x3D; this.getWrapperDom();
 
     return {
@@ -548,7 +550,7 @@ class MenuItemView {
     this.spec &#x3D; spec;
   }
 
-  render() {
+  render(): MenuItemViewRender {
     const dom &#x3D; this.dom &#x3D; this.getDom();
     const { schema } &#x3D; this.editorView.state;
     const { command } &#x3D; this.setupCommandListeners();
@@ -607,7 +609,7 @@ class MenuItemView {
     return div;
   }
 
-  private setupCommandListeners() {
+  private setupCommandListeners(): { command: Command } {
     const { schema } &#x3D; this.editorView.state;
 
     let command: Command;
@@ -725,7 +727,7 @@ export const renderMenu &#x3D; (options: MenuOptions, editorView: EditorView, me
   const combinedUpdates &#x3D; flatDeep(updates, Infinity);
 
   return {
-    update(state: EditorState) {
+    update(state: EditorState): void {
       combinedUpdates.forEach((update: (state: EditorState) &#x3D;&gt; void) &#x3D;&gt; {
         update(state);
       });

@@ -455,7 +455,7 @@
   const combinedUpdates &#x3D; flatDeep(updates, Infinity);
 
   return {
-    update(state: EditorState) {
+    update(state: EditorState): void {
       combinedUpdates.forEach((update: (state: EditorState) &#x3D;&gt; void) &#x3D;&gt; {
         update(state);
       });

@@ -123,7 +123,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="182" class="link-to-prism">src/lib/prosemirror/plugins/menu/menu.ts:182</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">src/lib/prosemirror/plugins/menu/menu.ts:184</a></div>
                             </td>
                         </tr>
 
@@ -210,7 +210,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="182" class="link-to-prism">src/lib/prosemirror/plugins/menu/menu.ts:182</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">src/lib/prosemirror/plugins/menu/menu.ts:184</a></div>
                             </td>
                         </tr>
 
@@ -246,8 +246,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="223"
-                            class="link-to-prism">src/lib/prosemirror/plugins/menu/menu.ts:223</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="225"
+                            class="link-to-prism">src/lib/prosemirror/plugins/menu/menu.ts:225</a></div>
                 </td>
             </tr>
 
@@ -285,8 +285,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="190"
-                            class="link-to-prism">src/lib/prosemirror/plugins/menu/menu.ts:190</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="192"
+                            class="link-to-prism">src/lib/prosemirror/plugins/menu/menu.ts:192</a></div>
                 </td>
             </tr>
 
@@ -295,7 +295,7 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>    <code>{ dom: any; update: (state: any) &#x3D;&gt; void; }</code>
+                        <b>Returns : </b>        <code><a href="../interfaces/MenuItemViewRender.html" target="_self" >MenuItemViewRender</a></code>
 
                     </div>
                 </td>
@@ -323,7 +323,9 @@ import {
   ToolbarDropdownGroupKeys,
   ToolbarDropdownGroupValues,
   MenuOptions,
-  Command
+  Command,
+  DropdownViewRender,
+  MenuItemViewRender
 } from &#x27;../../../types&#x27;;
 
 import { isNodeActive, isMarkActive, isListItem } from &#x27;../../helpers&#x27;;
@@ -478,7 +480,7 @@ class DropDownView {
     return dropdown;
   }
 
-  render() {
+  render(): DropdownViewRender {
     this.dom &#x3D; this.getWrapperDom();
 
     return {
@@ -501,7 +503,7 @@ class MenuItemView {
     this.spec &#x3D; spec;
   }
 
-  render() {
+  render(): MenuItemViewRender {
     const dom &#x3D; this.dom &#x3D; this.getDom();
     const { schema } &#x3D; this.editorView.state;
     const { command } &#x3D; this.setupCommandListeners();
@@ -560,7 +562,7 @@ class MenuItemView {
     return div;
   }
 
-  private setupCommandListeners() {
+  private setupCommandListeners(): { command: Command } {
     const { schema } &#x3D; this.editorView.state;
 
     let command: Command;
@@ -678,7 +680,7 @@ export const renderMenu &#x3D; (options: MenuOptions, editorView: EditorView, me
   const combinedUpdates &#x3D; flatDeep(updates, Infinity);
 
   return {
-    update(state: EditorState) {
+    update(state: EditorState): void {
       combinedUpdates.forEach((update: (state: EditorState) &#x3D;&gt; void) &#x3D;&gt; {
         update(state);
       });
