@@ -208,27 +208,9 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Plugin, EditorState, Transaction } from &#x27;prosemirror-state&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Plugin } from &#x27;prosemirror-state&#x27;;
 import { Node as ProsemirrorNode, Schema } from &#x27;prosemirror-model&#x27;;
 import { EditorView, Decoration, NodeView } from &#x27;prosemirror-view&#x27;;
-
-type TCR &#x3D; { dom: HTMLElement, update: (state: EditorState) &#x3D;&gt; void };
-
-export type ToolbarDropdown &#x3D; { heading?: string[] };
-export type ToolbarCustomMenuItem &#x3D; (editorView: EditorView) &#x3D;&gt; TCR;
-export type ToolbarDropdownGroupKeys &#x3D; keyof ToolbarDropdown;
-export type ToolbarDropdownGroupValues &#x3D; ToolbarDropdown[ToolbarDropdownGroupKeys];
-export type ToolbarItem &#x3D; string | ToolbarDropdown | ToolbarCustomMenuItem;
-export type Toolbar &#x3D; Array&lt;ToolbarItem[]&gt; | null;
-
-export interface MenuItemViewSpec {
-  classNames?: string[];
-  innerHTML?: string;
-  textContent?: string;
-  attrs?: { [key: string]: string };
-  activeClass: string;
-  disabledClass: string;
-}
 
 export interface NodeViews {
   [name: string]: (
@@ -243,25 +225,6 @@ export interface NgxEditorConfig {
   schema?: Schema;
   plugins?: Plugin[];
   nodeViews?: NodeViews;
-}
-
-export type MenuLabels &#x3D; { [key: string]: string };
-export interface MenuOptions {
-  toolbar?: Toolbar;
-  labels?: MenuLabels;
-  schema?: Schema;
-}
-
-export type Command &#x3D; (schema: EditorState, dispatch: (tr: Transaction) &#x3D;&gt; void) &#x3D;&gt; boolean;
-
-export interface DropdownViewRender {
-  dom: HTMLElement;
-  updates: Array&lt;(state: EditorState) &#x3D;&gt; void&gt;;
-}
-
-export interface MenuItemViewRender {
-  dom: HTMLElement;
-  update: (state: EditorState) &#x3D;&gt; void;
 }
 </code></pre>
     </div>
