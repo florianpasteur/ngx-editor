@@ -67,6 +67,9 @@
                             <a href="#bulletList" title="src/lib/schema.ts"><b>bulletList</b>&nbsp;&nbsp;&nbsp;(src/.../schema.ts)</a>
                         </li>
                         <li>
+                            <a href="#calculateBubblePos" title="src/lib/prosemirror/helpers/bubblePosition.ts"><b>calculateBubblePos</b>&nbsp;&nbsp;&nbsp;(src/.../bubblePosition.ts)</a>
+                        </li>
+                        <li>
                             <a href="#DEFAULT_ICON_HEIGHT" title="src/lib/utils/icons/index.ts"><b>DEFAULT_ICON_HEIGHT</b>&nbsp;&nbsp;&nbsp;(src/.../index.ts)</a>
                         </li>
                         <li>
@@ -104,6 +107,9 @@
                         </li>
                         <li>
                             <a href="#flatDeep" title="src/lib/utils/flatDeep.ts"><b>flatDeep</b>&nbsp;&nbsp;&nbsp;(src/.../flatDeep.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getSelectionMarks" title="src/lib/prosemirror/helpers/getSelectionMarks.ts"><b>getSelectionMarks</b>&nbsp;&nbsp;&nbsp;(src/.../getSelectionMarks.ts)</a>
                         </li>
                         <li>
                             <a href="#getSeperatorDom" title="src/lib/prosemirror/plugins/menu/menu.ts"><b>getSeperatorDom</b>&nbsp;&nbsp;&nbsp;(src/.../menu.ts)</a>
@@ -684,6 +690,50 @@
             </tbody>
         </table>
 </section>
+    <h3>src/lib/prosemirror/helpers/bubblePosition.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="calculateBubblePos"></a>
+                        <span class="name">
+                            <b>
+                            calculateBubblePos</b>
+                            <a href="#calculateBubblePos"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>(view: EditorView, toolTipEl: HTMLElement): TooltipPosition &#x3D;&gt; {
+  const { state: { selection } } &#x3D; view;
+  const { from, to } &#x3D; selection;
+
+  // These are in screen coordinates
+  const start &#x3D; view.coordsAtPos(from);
+  const end &#x3D; view.coordsAtPos(to);
+
+  // The box in which the tooltip is positioned, to use as base
+  const parent &#x3D; toolTipEl.offsetParent;
+  const box &#x3D; parent.getBoundingClientRect();
+
+  // Find a center-ish x position from the selection endpoints (when
+  // crossing lines, end may be more to the left)
+  const left &#x3D; Math.max((start.left + end.left) / 2, start.left + 3);
+
+  return {
+    left: left - box.left,
+    bottom: box.bottom - start.top
+  };
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
     <h3>src/lib/utils/icons/index.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
@@ -766,7 +816,8 @@
   code,
   ordered_list: orderedList,
   bullet_list: bulletList,
-  quote
+  quote,
+  link
 }</code>
                         </td>
                     </tr>
@@ -1072,6 +1123,40 @@
   return d &gt; 0
     ? arr.reduce((acc, val) &#x3D;&gt; acc.concat(Array.isArray(val) ? flatDeep(val, d - 1) : val), [])
     : arr.slice();
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>src/lib/prosemirror/helpers/getSelectionMarks.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getSelectionMarks"></a>
+                        <span class="name">
+                            <b>
+                            getSelectionMarks</b>
+                            <a href="#getSelectionMarks"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>(state: EditorState): Mark[] &#x3D;&gt; {
+  let marks: Mark[] &#x3D; [];
+
+  const { selection: { from, to } } &#x3D; state;
+
+  state.doc.nodesBetween(from, to, node &#x3D;&gt; {
+    marks &#x3D; [...marks, ...node.marks];
+  });
+
+  return marks;
 }</code>
                         </td>
                     </tr>

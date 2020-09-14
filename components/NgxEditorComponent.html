@@ -659,6 +659,7 @@ $menubar-text-padding: 0 $menu-item-spacing;
   background-clip: padding-box;
   border-radius: $border-radius;
   border: 2px solid rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
 .NgxEditor__MenuBar {
@@ -684,7 +685,10 @@ $menubar-text-padding: 0 $menu-item-spacing;
     height: $icon-size;
     width: $icon-size;
     transition: 0.3s ease-in-out;
-    margin-right: 2px;
+
+    &amp; + #{ $self }--Icon {
+      margin-left: 2px;
+    }
   }
 
   &amp;#{ $self }--Text {
@@ -804,6 +808,61 @@ $menubar-text-padding: 0 $menu-item-spacing;
     border-left: 3px solid #ddd;
     margin-left: 0;
     margin-right: 0;
+  }
+}
+
+.NgxEditor__FloatingBubble {
+  position: absolute;
+  z-index: 20;
+  background: white;
+  border: 1px solid silver;
+  border-radius: 4px;
+  padding: 0.3rem;
+  margin-bottom: 0.3rem;
+  transform: translateX(-50%);
+  display: flex;
+
+  &amp;::before,
+  &amp;::after {
+    content: &quot;&quot;;
+    height: 0;
+    width: 0;
+    position: absolute;
+    left: 50%;
+    margin-left: -5px;
+    border: 5px solid transparent;
+    border-bottom-width: 0;
+  }
+
+  &amp;::before {
+    bottom: -6px;
+    border-top-color: silver;
+  }
+
+  &amp;::after {
+    bottom: -4.5px;
+    border-top-color: white;
+  }
+
+  a {
+    display: inline-block;
+    max-width: 15rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 2px;
+  }
+
+  .commands {
+    display: flex;
+    margin-left: 0.5rem;
+
+    .command {
+      border: none;
+
+      &amp;:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
 

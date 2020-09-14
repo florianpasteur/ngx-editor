@@ -133,6 +133,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/DropDownView.html" data-type="entity-link">DropDownView</a>
                             </li>
                             <li class="link">
+                                <a href="classes/FloatingOptionsView.html" data-type="entity-link">FloatingOptionsView</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/MenuBarView.html" data-type="entity-link">MenuBarView</a>
                             </li>
                             <li class="link">
@@ -184,6 +187,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/NodeViews.html" data-type="entity-link">NodeViews</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/TooltipPosition.html" data-type="entity-link">TooltipPosition</a>
                             </li>
                         </ul>
                     </li>
